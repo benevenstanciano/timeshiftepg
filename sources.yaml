@@ -1,0 +1,11 @@
+sources:
+  - name: canada5
+    url: "https://www.open-epg.com/files/canada5.xml.gz"
+    shift_hours: 19
+    output: "docs/epg/canada5.xml.gz"
+
+# Add more sources like this:
+#  - name: other
+#    url: "https://example.com/other.xml.gz"
+#    shift_hours: 6
+#    output: "docs/epg/other.xml.gz"
