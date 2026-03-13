@@ -4,6 +4,16 @@ sources:
     shift_hours: 19
     output: "docs/epg/canada5.xml.gz"
 
+  - name: epgripper01us
+    url: "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz"
+    shift_hours: 19
+    output: "docs/epg/epgripper01us.xml.gz"
+
+  - name: epgripper01us
+    url: "https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz"
+    shift_hours: 19
+    output: "docs/epg/epgripper01us.xml.gz"
+
 # Add more sources like this:
 #  - name: other
 #    url: "https://example.com/other.xml.gz"
