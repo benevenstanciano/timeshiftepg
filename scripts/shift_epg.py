@@ -208,19 +208,27 @@ def main() -> int:
         print(f"  Shift:   {src.shift_hours} hour(s)")
         print(f"  Output:  {src.output}")
 
-        gz_in = fetch_gz(src.url)
-        in_hash = sha256_bytes(gz_in)
-        xml_text = gunzip_to_text(gz_in)
-        tree = parse_xml(xml_text)
+        try:
+            gz_in = fetch_gz(src.url)
+            in_hash = sha256_bytes(gz_in)
+            xml_text = gunzip_to_text(gz_in)
+            tree = parse_xml(xml_text)
 
-        changed = shift_programme_times(tree, src.shift_hours)
-        gz_out = write_gz(tree, src.output)
-        out_hash = sha256_bytes(gz_out)
+            changed = shift_programme_times(tree, src.shift_hours)
+            gz_out = write_gz(tree, src.output)
+            out_hash = sha256_bytes(gz_out)
 
-        print(f"  Updated attributes: {changed}")
-        print(f"  Input sha256:  {in_hash}")
-        print(f"  Output sha256: {out_hash}")
-        print(f"  Output size:   {len(gz_out)} bytes")
+            print(f"  Updated attributes: {changed}")
+            print(f"  Input sha256:  {in_hash}")
+            print(f"  Output sha256: {out_hash}")
+            print(f"  Output size:   {len(gz_out)} bytes")
+
+        except SystemExit:
+            print(f"  Skipping source due to fetch/decode/parse error: {src.name}")
+            continue
+        except Exception as e:
+            print(f"  Unexpected error for source {src.name}: {e}", file=sys.stderr)
+            continue
 
     return 0
 
