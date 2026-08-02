@@ -14,6 +14,11 @@ sources:
     shift_hours: 19
     output: "docs/epg/epgripper01uslocal.xml.gz"
 
+  - name: iptvorgro
+    url: "https://iptv-epg.org/files/epg-ro.xml.gz"
+    shift_hours: 2
+    output: "docs/epg/iptvorgro.xml.gz"    
+
 # Add more sources like this:
 #  - name: other
 #    url: "https://example.com/other.xml.gz"
